@@ -32,22 +32,15 @@
 
         <div class="container">
 
-            <!-- FILTER FORM -->
             <div class="container mb-4">
-                <form class="row g-3 bg-light p-3"
-                      method="get"
-                      action="index.jsp">
+                <form class="row g-3 bg-light p-3" method="get" action="index.jsp">
 
                     <div class="col-md-5">
-                        <input type="text"
-                               name="type"
-                               class="form-control"
-                               placeholder="Type animal...">
+                        <input type="text" name="type" class="form-control" placeholder="Type animal...">
                     </div>
 
                     <div class="col-md-3">
-                        <button type="submit"
-                                class="btn btn-primary w-100">
+                        <button type="submit" class="btn btn-primary w-100">
                             Filter animal
                         </button>
                     </div>
@@ -55,35 +48,21 @@
                 </form>
             </div>
 
-            <!-- ANIMALS GRID -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
                 <%
                     String type = request.getParameter("type");
-
                     List<Animal> allAnimals = new ArrayList<>();
 
                     try {
-
                         BaseDatos.connect();
-
                         AnimalDao animaldao = jdbi.onDemand(AnimalDao.class);
-
                         if (type != null && !type.isEmpty()) {
-
-                            allAnimals.addAll(
-                                    animaldao.getByName("%" + type + "%")
-                            );
-
+                            allAnimals.addAll(animaldao.getByType("%" + type + "%"));
                         } else {
-
-                            allAnimals.addAll(
-                                    animaldao.getAllAnimals()
-                            );
+                            allAnimals.addAll(animaldao.getAllAnimals());
                         }
-
                     } catch (Exception e) {
-
                         e.printStackTrace();
                     }
 
@@ -115,21 +94,13 @@
                                     Edit Animal
                                 </a>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
                 <% } %>
-
             </div>
-
         </div>
-
     </div>
-
 </main>
 
 <%@include file="includes/footer.jsp"%>

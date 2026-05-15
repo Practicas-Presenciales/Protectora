@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.grupo.protectora.dao.EmployeeDao" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
+<%@ page import="static com.grupo.protectora.Util.MessageErrorSuccess.sendError" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
@@ -30,6 +31,20 @@
 
 <main class="container py-5">
     <h2 class="mb-4">Employee Management</h2>
+
+    <p>
+        <a href="edit-employees.jsp" class="btn btn-primary my-2">New Employee</a>
+    </p>
+
+    <%
+        if ("1".equals(request.getParameter("error"))) {
+    %>
+    <div class="alert alert-danger">
+        <p>Sorry, this employee has animals in his care, it cannot be deleted</p>
+    </div>
+    <%
+        }
+    %>
 
     <form class="row g-3 p-3" method="get" action="employees-list.jsp">
         <div class="col-md-6">
@@ -73,7 +88,7 @@
                         </a>
 
                         <a href="edit-employees.jsp?id=<%= employee.getId() %>"
-                           class="btn btn-warning px-4">
+                           class="btn btn-sm btn-warning px-4">
                             Edit Employee
                         </a>
                     </td>

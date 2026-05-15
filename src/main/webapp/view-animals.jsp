@@ -2,6 +2,8 @@
 <%@ page import="com.grupo.protectora.dao.BaseDatos" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
 <%@ page import="com.grupo.protectora.dao.AnimalDao" %>
+<%@ page import="com.grupo.protectora.dao.EmployeeDao" %>
+<%@ page import="com.grupo.protectora.model.Trabajador" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="includes/header.jsp"%>
@@ -9,11 +11,18 @@
 <%
     int id = Integer.parseInt(request.getParameter("id"));
     Animal animal = null;
+    Trabajador employee = null;
 
     try {
         BaseDatos.connect();
         AnimalDao animalDao = jdbi.onDemand(AnimalDao.class);
         animal = animalDao.getByIdAnimal(id);
+
+        int idEmployee = animal.getId_employee();
+
+        EmployeeDao employeeDao = jdbi.onDemand(EmployeeDao.class);
+        employee = employeeDao.getByIdEmployee(idEmployee);
+
     } catch (ClassNotFoundException cnfe) {
         cnfe.printStackTrace();
     }
@@ -45,7 +54,7 @@
 
                     <div class="row mb-4">
                         <div class="col-sm-4 text-muted fw-bold">Caretaker:</div>
-                        <div class="col-sm-8 fs-5"><%= animal.getVaccines() %></div>
+                        <div class="col-sm-8 fs-5"><%= employee.getName() %></div>
                     </div>
 
                     <div class="d-flex gap-3 mt-4">
