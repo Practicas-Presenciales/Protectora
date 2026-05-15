@@ -43,18 +43,23 @@
                         <div class="col-sm-8 fs-5"><%= animal.getVaccines() %></div>
                     </div>
 
+                    <div class="row mb-4">
+                        <div class="col-sm-4 text-muted fw-bold">Caretaker:</div>
+                        <div class="col-sm-8 fs-5"><%= animal.getVaccines() %></div>
+                    </div>
+
                     <div class="d-flex gap-3 mt-4">
                         <a href="index.jsp" class="btn btn-outline-secondary px-4">
                             Back to all animals
                         </a>
 
-                        <a href="delete-animals?id=<%= animal.getId() %>"
+                        <a href="remove-animal?id=<%= animal.getId() %>"
                            class="btn btn-danger px-4"
                            onclick="return confirm('Are you sure you want to delete this animal?')">
                             Delete Animal
                         </a>
 
-                        <a href="edit-animals?id=<%= animal.getId() %>"
+                        <a href="edit-animals.jsp?id=<%= animal.getId() %>"
                            class="btn btn-warning px-4">
                             Edit Animal
                         </a>

@@ -48,13 +48,13 @@
                             Back to all employees
                         </a>
 
-                        <a href="delete-employees?id=<%= employee.getId() %>"
+                        <a href="delete-employee?id=<%= employee.getId() %>"
                            class="btn btn-danger px-4"
                            onclick="return confirm('Are you sure you want to delete this animal?')">
                             Delete Employee
                         </a>
 
-                        <a href="edit-employee?id=<%= employee.getId() %>"
+                        <a href="edit-employees.jsp?id=<%= employee.getId() %>"
                            class="btn btn-warning px-4">
                             Edit Employee
                         </a>

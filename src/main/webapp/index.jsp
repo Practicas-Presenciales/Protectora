@@ -51,8 +51,8 @@
                         <i><%= animal.getType() %></i>
                     </p>
                     <div class="d-flex justify-content-between">
-                        <a href="view-animals.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-outline-primary">View Details</a>
-                        <a href="delete-animal?id=<%= animal.getId() %>"
+                        <a href="view-animals.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-primary">View Details</a>
+                        <a href="remove-animal?id=<%= animal.getId() %>"
                            class="btn btn-sm btn-danger"
                            onclick="return confirm('Are you sure you want to delete this animal?')">Delete
                         </a>

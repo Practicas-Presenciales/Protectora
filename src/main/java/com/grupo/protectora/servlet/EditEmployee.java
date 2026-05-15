@@ -41,6 +41,8 @@ public class EditEmployee extends HttpServlet {
 
         if (action.equals("Register")) {
             employeeDao.add(name, phone, email, document);
+
+            sendSuccess(response, "successfully registered employee");
         }else{
             int id = Integer.parseInt(idStr);
 

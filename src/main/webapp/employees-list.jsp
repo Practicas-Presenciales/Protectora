@@ -46,16 +46,16 @@
                     <td>
 
                         <a href="view-employees.jsp?id=<%= employee.getId() %>"
-                           class="btn btn-warning px-4">
+                           class="btn btn-sm btn-primary">
                             View Employee
                         </a>
 
-                        <a href="delete-employee?id=<%= employee.getId() %>" class="btn btn-sm btn-outline-dark"
+                        <a href="delete-employee?id=<%= employee.getId() %>" class="btn btn-sm btn-danger"
                                onclick="return confirm('Are you sure you want to delete this employee?')">
                               Delete
                         </a>
 
-                        <a href="edit-employee.jsp?id=<%= employee.getId() %>"
+                        <a href="edit-employees.jsp?id=<%= employee.getId() %>"
                            class="btn btn-warning px-4">
                             Edit Employee
                         </a>
