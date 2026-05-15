@@ -12,11 +12,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import static com.grupo.protectora.Util.MessageErrorSuccess.sendError;
+import static com.grupo.protectora.Util.MessageErrorSuccess.sendSuccess;
 import static com.grupo.protectora.dao.BaseDatos.jdbi;
 
 @WebServlet("/edit-employee")
 @MultipartConfig
 public class EditEmployee extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String action = request.getParameter("action");
     String idStr = request.getParameter("id");
