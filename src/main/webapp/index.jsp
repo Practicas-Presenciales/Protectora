@@ -14,9 +14,9 @@
 
     try{
         BaseDatos.connect();
-        AnimalDao animaldao = jdbi.onDemand(AnimalDao.class);
+        AnimalDao animalDao = jdbi.onDemand(AnimalDao.class);
 
-        allAnimals.addAll(animaldao.getAllAnimals());
+        allAnimals.addAll(animalDao.getAllAnimals());
 
     } catch (Exception e) {
         e.printStackTrace();
@@ -33,7 +33,7 @@
                 </p>
 
                 <p>
-                    <a href="edit-animal.jsp" class="btn btn-primary my-2">New Animal</a>
+                    <a href="edit-animals.jsp" class="btn btn-primary my-2">New Animal</a>
                 </p>
             </div>
         </div>
@@ -56,7 +56,7 @@
                            class="btn btn-sm btn-danger"
                            onclick="return confirm('Are you sure you want to delete this animal?')">Delete
                         </a>
-                        <a href="edit-animals?id=<%= animal.getId() %>"
+                        <a href="edit-animals.jsp?id=<%= animal.getId() %>"
                            class="btn btn-warning px-4">
                             Edit Animal
                         </a>
