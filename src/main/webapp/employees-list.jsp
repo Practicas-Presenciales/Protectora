@@ -12,10 +12,17 @@
 
     List<Trabajador> allEmployees = new ArrayList<>();
 
+    String searchName = request.getParameter("searchName");
+
   try{
       BaseDatos.connect();
       EmployeeDao employeeDao = jdbi.onDemand(EmployeeDao.class);
-      allEmployees.addAll(employeeDao.getAllEmployees());
+
+      if(searchName !=null) {
+          allEmployees.addAll(employeeDao.getByName("%" + searchName + "%"));
+      } else{
+          allEmployees.addAll(employeeDao.getAllEmployees());
+      }
     } catch (ClassNotFoundException cnfe) {
         cnfe.printStackTrace();
     }
@@ -23,6 +30,16 @@
 
 <main class="container py-5">
     <h2 class="mb-4">Employee Management</h2>
+
+    <form class="row g-3 p-3" method="get" action="employees-list.jsp">
+        <div class="col-md-6">
+            <input type="text" name="searchName" class="form-control" placeholder="Search name...">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-dark w-100">Search</button>
+        </div>
+    </form>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="table-dark">

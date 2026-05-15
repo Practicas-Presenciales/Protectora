@@ -24,4 +24,10 @@ public interface EmployeeDao {
     @SqlQuery("SELECT * FROM trabajadores WHERE id = ?")
     @UseRowMapper(EmployeeMapper.class)
     Trabajador getByIdEmployee(int id);
+
+    @SqlQuery("SELECT * FROM trabajadores WHERE nombre LIKE ?")
+    @UseRowMapper(EmployeeMapper.class)
+    List<Trabajador> getByName(String name);
+
+
 }
