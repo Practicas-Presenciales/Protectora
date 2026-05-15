@@ -17,9 +17,9 @@ public interface EmployeeDao {
     @SqlUpdate("UPDATE trabajadores SET nombre = ?, telefono = ?, email = ?, dni = ?")
     void modify (String name, String phone, String email, String document);
 
-    @SqlQuery("SELECT * FROM trabajadores WHERE id = ?")
+    @SqlQuery("SELECT * FROM trabajadores")
     @UseRowMapper(EmployeeMapper.class)
-    List<Trabajador> getAllEmployees(int id);
+    List<Trabajador> getAllEmployees();
 
     @SqlQuery("SELECT * FROM trabajadores WHERE id = ?")
     @UseRowMapper(EmployeeMapper.class)
