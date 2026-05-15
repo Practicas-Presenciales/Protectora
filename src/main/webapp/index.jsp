@@ -33,7 +33,7 @@
                 </p>
 
                 <p>
-                    <a href="create-animal.jsp" class="btn btn-primary my-2">New Animal</a>
+                    <a href="edit-animal.jsp" class="btn btn-primary my-2">New Animal</a>
                 </p>
             </div>
         </div>
@@ -51,12 +51,17 @@
                         <i><%= animal.getType() %></i>
                     </p>
                     <div class="d-flex justify-content-between">
-                        <a href="view-animal.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-outline-primary">View Details</a>
+                        <a href="view-animals.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-outline-primary">View Details</a>
                         <a href="delete-animal?id=<%= animal.getId() %>"
                            class="btn btn-sm btn-danger"
-                           onclick="return confirm('Are you sure you want to delete this animal?')">Delete</a>
-                        </div>
+                           onclick="return confirm('Are you sure you want to delete this animal?')">Delete
+                        </a>
+                        <a href="edit-animals?id=<%= animal.getId() %>"
+                           class="btn btn-warning px-4">
+                            Edit Animal
+                        </a>
                     </div>
+
                 </div>
             </div>
         </div>

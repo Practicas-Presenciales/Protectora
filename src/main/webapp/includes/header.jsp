@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="employee.jsp">Employees</a>
+                            <a class="nav-link active" href="employees-list.jsp">Employees</a>
                         </li>
                     </ul>
                 </div>

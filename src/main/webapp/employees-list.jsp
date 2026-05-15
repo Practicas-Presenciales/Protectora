@@ -4,6 +4,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.grupo.protectora.dao.EmployeeDao" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
 
 <%
@@ -42,9 +44,20 @@
                     <td><%= employee.getPhone()%></td>
                     <td><%= employee.getDocument()%>
                     <td>
+
+                        <a href="view-employees.jsp?id=<%= employee.getId() %>"
+                           class="btn btn-warning px-4">
+                            View Employee
+                        </a>
+
                         <a href="delete-employee?id=<%= employee.getId() %>" class="btn btn-sm btn-outline-dark"
                                onclick="return confirm('Are you sure you want to delete this employee?')">
                               Delete
+                        </a>
+
+                        <a href="edit-employee.jsp?id=<%= employee.getId() %>"
+                           class="btn btn-warning px-4">
+                            Edit Employee
                         </a>
                     </td>
                 </tr>
