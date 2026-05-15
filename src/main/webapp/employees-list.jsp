@@ -42,7 +42,7 @@
                     <td><%= employee.getName() %></td>
                     <td><%= employee.getEmail() %></td>
                     <td><%= employee.getPhone()%></td>
-                    <td><%= employee.getDocument()%>
+                    <td><%= employee.getDocument()%></td>
                     <td>
 
                         <a href="view-employees.jsp?id=<%= employee.getId() %>"

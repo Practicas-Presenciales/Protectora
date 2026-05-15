@@ -45,7 +45,7 @@ public class EditEmployee extends HttpServlet {
             int id = Integer.parseInt(idStr);
 
             Trabajador current = employeeDao.getByIdEmployee(id);
-            employeeDao.modify(name, phone, email, document);
+            employeeDao.modify(name, phone, email, document, id);
 
             sendSuccess(response, "successfully modified employee");
         }

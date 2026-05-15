@@ -21,9 +21,7 @@
                 </p>
 
                 <p>
-                    <a href="edit-animal.jsp" class="btn btn-primary my-2">
-                        New Animal
-                    </a>
+                    <a href="edit-animals.jsp" class="btn btn-primary my-2">New Animal</a>
                 </p>
 
             </div>
