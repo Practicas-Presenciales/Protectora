@@ -18,6 +18,9 @@ public interface AnimalDao {
     @SqlUpdate("UPDATE animales SET nombre=?, tipo=?, edad=?, vacunas=?)")
     void modify(String name, String type, int age, String vaccines);
 
+    @SqlQuery("SELECT COUNT(*) FROM animales WHERE id_trabajadores = ?")
+    int countByEmployeeId(int idEmployee);
+
     @SqlQuery("SELECT * FROM animales")
     @UseRowMapper(AnimalMapper.class)
     List<Animal> getAllAnimals();
