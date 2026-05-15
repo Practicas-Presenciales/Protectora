@@ -15,8 +15,8 @@ public interface AnimalDao {
     @SqlUpdate("DELETE FROM animales WHERE id = ?")
     void delete(int id);
 
-    @SqlUpdate("UPDATE animales SET nombre=?, tipo=?, edad=?, vacunas=?)")
-    void modify(String name, String type, int age, String vaccines);
+    @SqlUpdate("UPDATE animales SET nombre=?, tipo=?, edad=?, vacunas=?, id_trabajadores=? WHERE id = ?")
+    void modify(String name, String type, int age, String vaccines, int id_employee, int id);
 
     @SqlQuery("SELECT COUNT(*) FROM animales WHERE id_trabajadores = ?")
     int countByEmployeeId(int idEmployee);

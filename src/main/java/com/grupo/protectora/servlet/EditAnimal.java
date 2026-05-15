@@ -24,15 +24,21 @@ public class EditAnimal extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        // recogems la acción y el id para saber si editamos o creamos
+        // recogemos la acción y el id para saber si editamos o creamos
         String action = request.getParameter("action");
-        String id = request.getParameter("id");
+        String idStr = request.getParameter("id");
         String id_employee = request.getParameter("id_employee");
+
+        int id = 0;
+        if (idStr != null && !idStr.trim().isEmpty()) {
+            id = Integer.parseInt(idStr);
+        }
 
         String name = request.getParameter("name");
         // Validar campos vacío
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             sendError(response, "The name field must be required");
+            return;
         }
 
         String type = request.getParameter("type");
@@ -57,13 +63,13 @@ public class EditAnimal extends HttpServlet {
                 return;
             }
 
-            // Comporbamos si registramos uno nuevo
+            // Comprobamos si registramos uno nuevo
             if (action.equals("Register")) {
                 animalDao.add(name,type,age,vaccines,id_employeeInt);
                 sendSuccess(response, "The animal has been added correctly");
             } else  {
                 // modificamos
-                animalDao.modify(name,type,age,vaccines);
+                animalDao.modify(name,type,age,vaccines, id_employeeInt, id);
                 sendSuccess( response,"The animal has been modified correctly");
             }
         } catch (ClassNotFoundException cnfe) {
