@@ -1,6 +1,7 @@
 <%@ page import="com.grupo.protectora.model.Animal" %>
 <%@ page import="com.grupo.protectora.dao.BaseDatos" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
+<%@ page import="com.grupo.protectora.dao.AnimalDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="includes/header.jsp"%>

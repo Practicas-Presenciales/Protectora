@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.grupo.protectora.dao.BaseDatos" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
+<%@ page import="com.grupo.protectora.dao.AnimalDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="includes/header.jsp"%>
@@ -53,7 +54,7 @@
                         <a href="view-animal.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-outline-primary">View Details</a>
                         <a href="delete-animal?id=<%= animal.getId() %>"
                            class="btn btn-sm btn-danger"
-                           onclick="return confirm('¿Estás seguro de eliminar esta tienda?')">Delete</a>
+                           onclick="return confirm('Are you sure you want to delete this animal?')">Delete</a>
                         </div>
                     </div>
                 </div>
