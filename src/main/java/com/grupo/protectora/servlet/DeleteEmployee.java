@@ -29,7 +29,7 @@ public class DeleteEmployee extends HttpServlet {
             int countAnimal = animalDao.countByEmployeeId(id);
 
             if (countAnimal > 0 ){
-                sendError (response, "Sorry, this employee has animals in his care, it cannot be deleted");
+                response.sendRedirect("employees-list.jsp?error=1");
                 return;
             }
 

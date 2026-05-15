@@ -33,7 +33,7 @@ public interface AnimalDao {
     @UseRowMapper(AnimalMapper.class)
     List<Animal> getAllAnimalsByEmployeeId(int id_employee);
 
-    @SqlQuery("SELECT * FROM animales WHERE nombre = ?")
+    @SqlQuery("SELECT * FROM animales WHERE tipo LIKE ?")
     @UseRowMapper(AnimalMapper.class)
-    List<Animal> getByName(String name);
+    List<Animal> getByType(String type);
 }
