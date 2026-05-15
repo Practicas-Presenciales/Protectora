@@ -5,6 +5,7 @@ import com.grupo.protectora.dao.BaseDatos;
 import com.grupo.protectora.dao.EmployeeDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -14,7 +15,7 @@ import static com.grupo.protectora.Util.MessageErrorSuccess.sendError;
 import static com.grupo.protectora.dao.BaseDatos.jdbi;
 
 @WebServlet("/delete-employee")
-public class DeleteEmployee {
+public class DeleteEmployee extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
