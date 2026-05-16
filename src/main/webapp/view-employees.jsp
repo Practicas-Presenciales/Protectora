@@ -1,0 +1,122 @@
+<%@ page import="com.grupo.protectora.model.Trabajador" %>
+<%@ page import="com.grupo.protectora.dao.EmployeeDao" %>
+<%@ page import="com.grupo.protectora.dao.BaseDatos" %>
+<%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
+<%@ page import="com.grupo.protectora.model.Animal" %>
+<%@ page import="com.grupo.protectora.dao.AnimalDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@include file="includes/header.jsp"%>
+
+<%
+    int id = Integer.parseInt(request.getParameter("id"));
+    Trabajador employee = null;
+
+    List<Animal> employeeAnimals = new ArrayList<>();
+
+    try {
+        BaseDatos.connect();
+        EmployeeDao employeeDao = jdbi.onDemand(EmployeeDao.class);
+        employee = employeeDao.getByIdEmployee(id);
+
+        AnimalDao animalDao = jdbi.onDemand(AnimalDao.class);
+        employeeAnimals = animalDao.getAllAnimalsByEmployeeId(id);
+    } catch (ClassNotFoundException cnfe) {
+        cnfe.printStackTrace();
+    }
+%>
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white p-4">
+                    <h1 class="display-5 mb-0"><%= employee.getName() %></h1>
+                </div>
+
+                <div class="card-body p-5">
+                    <div class="row mb-4">
+                        <div class="col-sm-4 text-muted fw-bold">Email:</div>
+                        <div class="col-sm-8 fs-5"><%= employee.getEmail() %></div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-4 text-muted fw-bold">Document:</div>
+                        <div class="col-sm-8 fs-5"><%= employee.getDocument()%></div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-4 text-muted fw-bold">Phone:</div>
+                        <div class="col-sm-8 fs-5"><%= employee.getPhone() %></div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="employees-list.jsp" class="btn btn-outline-secondary px-4">
+                            Back to all employees
+                        </a>
+
+                        <a href="delete-employee?id=<%= employee.getId() %>"
+                           class="btn btn-danger px-4"
+                           onclick="return confirm('Are you sure you want to delete this animal?')">
+                            Delete Employee
+                        </a>
+
+                        <a href="edit-employees.jsp?id=<%= employee.getId() %>"
+                           class="btn btn-warning px-4">
+                            Edit Employee
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-lg border-0 mt-4">
+                <div class="card-header bg-dark text-white p-3">
+                    <h2 class="h5 mb-0">Animals in charge</h2>
+                </div>
+
+                <div class="card-body p-4">
+                    <% if (employeeAnimals == null || employeeAnimals.isEmpty()) { %>
+                    <div class="alert alert-warning mb-0">
+                        This employee has no animals in charge.
+                    </div>
+                    <% } else { %>
+                    <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Age</th>
+                                <th>Vaccines</th>
+                                <th>Detail</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for (Animal animal : employeeAnimals) { %>
+                            <tr>
+                                <td><%= animal.getName() %></td>
+                                <td><%= animal.getType() %></td>
+                                <td><%= animal.getAge() %></td>
+                                <td><%= animal.getVaccines() %></td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary"
+                                       href="view-animals.jsp?id=<%= animal.getId() %>">
+                                        View Animal
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<%@include file="includes/footer.jsp"%>

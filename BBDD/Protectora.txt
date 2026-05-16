@@ -1,0 +1,2 @@
+trabajador (id, nombre, teléfono, email, dni)
+animal (id, nombre, tipo, edad, vacunas, -id_trabajador)
