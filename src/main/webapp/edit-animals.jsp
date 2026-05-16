@@ -44,6 +44,7 @@
                 String id = request.getParameter("id");
                 String action = "Register";
                 Animal animal = null;
+                Trabajador employeeUpdate = null;
 
                 List<Trabajador> allEmployees = new ArrayList<>();
 
@@ -54,16 +55,21 @@
                         AnimalDao animalDao = jdbi.onDemand(AnimalDao.class);
                         animal = animalDao.getByIdAnimal(Integer.parseInt(id));
 
+                        EmployeeDao employeeDao = jdbi.onDemand(EmployeeDao.class);
 
+                        int idEmployee = animal.getId_employee();
+                        employeeUpdate = employeeDao.getByIdEmployee(idEmployee);
                     } catch (ClassNotFoundException cnfe) {
                         cnfe.printStackTrace();
                     }
                 }
 
+
                 try {
                     BaseDatos.connect();
                     EmployeeDao employeeDao = jdbi.onDemand(EmployeeDao.class);
                     allEmployees.addAll(employeeDao.getAllEmployees());
+
                 } catch (ClassNotFoundException cnfe) {
                     cnfe.printStackTrace();
                 }
@@ -101,6 +107,13 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Caretaker</label>
                         <select name="id_employee" class="form-control">
+                            <%
+                                if (action.equalsIgnoreCase("Edit")) {
+                            %>
+                            <option value="<%= employeeUpdate.getId()%>">Currently: <%= employeeUpdate.getName()%></option>
+                            <%
+                                }
+                            %>
                             <%
                                 for (Trabajador employee : allEmployees) {
                             %>

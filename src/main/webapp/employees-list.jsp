@@ -4,7 +4,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.grupo.protectora.dao.EmployeeDao" %>
 <%@ page import="static com.grupo.protectora.dao.BaseDatos.jdbi" %>
-<%@ page import="static com.grupo.protectora.Util.MessageErrorSuccess.sendError" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
@@ -12,7 +11,6 @@
 <%
 
     List<Trabajador> allEmployees = new ArrayList<>();
-
     String searchName = request.getParameter("searchName");
 
   try{
@@ -63,7 +61,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Document</th>
-                    <th>Acciones</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +82,7 @@
 
                         <a href="delete-employee?id=<%= employee.getId() %>" class="btn btn-sm btn-danger"
                                onclick="return confirm('Are you sure you want to delete this employee?')">
-                              Delete
+                              Delete Employee
                         </a>
 
                         <a href="edit-employees.jsp?id=<%= employee.getId() %>"
