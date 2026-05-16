@@ -44,7 +44,7 @@ public class EditAnimal extends HttpServlet {
         String type = request.getParameter("type");
         String ageStr = request.getParameter("age");
         if (ageStr.isEmpty()) {
-            sendError(response ,"The caregiver's age is not valid");
+            sendError(response ,"The animal's age is required");
             return;
         }
 
@@ -59,7 +59,7 @@ public class EditAnimal extends HttpServlet {
             AnimalDao animalDao = jdbi.onDemand(AnimalDao.class);
 
             if( id_employeeInt <= 0) {
-                sendError(response, "The caregiver's ID is not valid");
+                sendError(response, "The employee's ID is not valid");
                 return;
             }
 
