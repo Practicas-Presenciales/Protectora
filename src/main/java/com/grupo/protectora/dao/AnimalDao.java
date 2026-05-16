@@ -29,7 +29,7 @@ public interface AnimalDao {
     @UseRowMapper(AnimalMapper.class)
     Animal getByIdAnimal(int id_animal);
 
-    @SqlQuery("SELECT * FROM animales WHERE id = ?")
+    @SqlQuery("SELECT * FROM animales WHERE id_trabajadores = ?")
     @UseRowMapper(AnimalMapper.class)
     List<Animal> getAllAnimalsByEmployeeId(int id_employee);
 
