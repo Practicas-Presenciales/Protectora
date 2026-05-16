@@ -15,28 +15,23 @@
             <div class="col-lg-6 col-md-8 mx-auto">
 
                 <h1 class="fw-light">Animal House shelter</h1>
-
                 <p class="lead text-body-primary">
                     Welcome to our Shelter, we hope you love our furry friends.
                 </p>
-
                 <p>
                     <a href="edit-animals.jsp" class="btn btn-primary my-2">New Animal</a>
                 </p>
-
             </div>
         </div>
     </section>
 
     <div class="album py-5 bg-body-tertiary">
-
         <div class="container">
-
             <div class="container mb-4">
                 <form class="row g-3 bg-light p-3" method="get" action="index.jsp">
 
                     <div class="col-md-5">
-                        <input type="text" name="type" class="form-control" placeholder="Type animal...">
+                        <input type="text" name="type" class="form-control" placeholder="By Type...">
                     </div>
 
                     <div class="col-md-3">
@@ -44,7 +39,6 @@
                             Filter animal
                         </button>
                     </div>
-
                 </form>
             </div>
 
@@ -70,24 +64,16 @@
                 %>
 
                 <div class="col">
-
                     <div class="card h-100 shadow-sm">
-
                         <div class="card-body">
-
-                            <h5 class="card-title fw-bold">
-                                <%= animal.getName() %>
-                            </h5>
-
-                            <p class="card-text text-muted">
-                                <i><%= animal.getType() %></i>
-                            </p>
+                            <h5 class="card-title fw-bold"><%= animal.getName() %></h5>
+                            <p class="card-text text-muted"><i><%= animal.getType() %></i></p>
 
                             <div class="d-flex justify-content-between">
                                 <a href="view-animals.jsp?id=<%= animal.getId() %>" class="btn btn-sm btn-primary">View Details</a>
                                 <a href="remove-animal?id=<%= animal.getId() %>"
                                    class="btn btn-sm btn-danger"
-                                   onclick="return confirm('Are you sure you want to delete this animal?')">Delete
+                                   onclick="return confirm('Are you sure you want to delete this animal?')">Delete Animal
                                 </a>
                                 <a href="edit-animals.jsp?id=<%= animal.getId() %>"
                                    class="btn btn-warning px-4">
